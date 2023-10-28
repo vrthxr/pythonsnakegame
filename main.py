@@ -4,11 +4,11 @@ from tkinter.font import Font
 import random
 
 
-# Variáveis não modificáveis do jogo, como altura, coloração e velocidade.
+# Variáveis do jogo modificáveis, podendo mudar tamanho da tela, velocidade da cobra, coloração e número de espaços.
 GAME_WIDTH = 1200
 GAME_HEIGHT = 800
 SPEED = 50
-SPACE_SIZE = 50
+SPACE_SIZE = 25
 BODY_PARTS = 4
 SNAKE_COLOR = "#5A5A5A"
 FOOD_COLOR = "#FFFFFF"
