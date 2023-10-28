@@ -11,11 +11,8 @@ SPEED = 50
 SPACE_SIZE = 50
 BODY_PARTS = 4
 SNAKE_COLOR = "#5A5A5A"
-FOOD_COLOR = "white"
+FOOD_COLOR = "#FFFFFF"
 BACKGROUND_COLOR = "#000000"
-
-
-# Classes
 
 
 class Snake:
@@ -34,7 +31,7 @@ class Snake:
             self.squares.append(square)
 
 
-# A classe de comida foi feita com uma divisão do tamanho do jogo/pelo espaço em jogo (Vendo como um board de xadrez, 500/50 me causa 10 espaços possíveis para aparecer a comida).
+# A questão da aleatoriedade da comida no mapa foi feita com uma divisão do tamanho do jogo/pelo espaço em jogo (tipo um board de xadrez).
 class Food:
     def __init__(self):
         x = random.randint(0, (GAME_WIDTH / SPACE_SIZE) - 1) * SPACE_SIZE
@@ -53,7 +50,7 @@ class Food:
 
 
 def next_turn(snake, food):
-    # Adicionar pedaço de corpo à cobra
+    # Sistema de pontuação (corpo da cobra e score+)
     x, y = snake.coordinates[0]
     if direction == "up":
         y -= SPACE_SIZE
@@ -148,10 +145,9 @@ def game_over():
     )
 
 
-# Botão de reiniciar o jogo adicionado na janela
+# Botão de reiniciar sem precisar abrir o programa novamente adicionado à janela.
 def restart_game():
     global snake, food, score, direction
-    # Resetar o jogo aos seus valores iniciais sem precisar abrir o programa novamente
     canvas.delete(ALL)
     snake = Snake()
     food = Food()
@@ -176,7 +172,7 @@ direction = "down"
 label = Label(window, text="Pontuação: {}".format(score), font=("Retro Gaming", 40))
 label.pack()
 
-# Criação do Mapa
+# Criação do mapa
 canvas = Canvas(window, bg=BACKGROUND_COLOR, height=GAME_HEIGHT, width=GAME_WIDTH)
 canvas.pack()
 
@@ -202,7 +198,7 @@ window.bind("<Up>", lambda event: change_direction("up"))
 window.bind("<Down>", lambda event: change_direction("down"))
 
 
-# Criação da Cobra e da Comida
+# Criação cobra e comida
 
 snake = Snake()
 food = Food()
